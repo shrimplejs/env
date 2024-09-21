@@ -19,8 +19,10 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
       - run: corepack enable yarn
       - run: yarn install
-      - run: yarn typedoc
       - run: git checkout -b typedoc
+      - run: git pull origin main
+      - run: git push origin typedoc
+      - run: yarn typedoc
       - run: git add .
       - name: Set outputs
         id: vars
