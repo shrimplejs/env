@@ -1,9 +1,9 @@
 {
-  "name": "typescript-lib-init",
+  "name": "shrimple-env",
   "version": "1.0.0",
   "scripts": {
     "test": "vitest run",
-    "build": "tsup",
+    "build": "NODE_ENV=production tsup",
     "dev": "tsup --watch"
   },
   "main": "./dist/index.js",
@@ -22,15 +22,17 @@
     "LICENSE",
     "package.json"
   ],
-  "repository": "https://github.com/SrIzan10/ts-lib-boilerplate.git",
+  "repository": "https://github.com/shrimplejs/env.git",
   "author": "Izan Gil <66965250+SrIzan10@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^6.20.0",
     "eslint": "^8.56.0",
     "tsup": "^8.2.4",
     "typescript": "^5.6.2",
-    "vitest": "^1.2.2"
-  }
+    "vitest": "^2.1.1"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
