@@ -14,6 +14,9 @@ jobs:
         with:
           node-version: '21'
           cache: 'npm'
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
       - run: corepack enable yarn
       - run: yarn install
       - run: git checkout -b typedoc
