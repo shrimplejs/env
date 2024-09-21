@@ -19,6 +19,7 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
       - run: corepack enable yarn
       - run: yarn install
+      - run: yarn typedoc
       - run: git checkout -b typedoc
       - run: git add .
       - name: Set outputs
@@ -26,4 +27,3 @@ jobs:
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - run: git commit -m "Update typedoc to commit ${{ steps.vars.outputs.sha_short }}"
       - run: git push --set-upstream origin typedoc
-      - run: yarn typedoc
