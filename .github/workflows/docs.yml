@@ -15,6 +15,7 @@ jobs:
       - run: corepack enable yarn
       - run: yarn install
       - run: git checkout -b typedoc
+      - run: git push --set-upstream origin typedoc
       - run: yarn typedoc
       - name: Set outputs
         id: vars
