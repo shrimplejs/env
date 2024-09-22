@@ -14,4 +14,8 @@ describe('parser', () => {
     it('should ignore empty lines', () => {
         expect(parseEnv('HELLO=WORLD!\n\nFOO=BAR')).toEqual({ 'HELLO': 'WORLD!', 'FOO': 'BAR' })
     });
+
+    it('should parse multiple equals in value correctly', () => {
+        expect(parseEnv('HELLO=WORLD!=ANOTHEREQUAL')).toEqual({ 'HELLO': 'WORLD!=ANOTHEREQUAL' })
+    });
 })

@@ -5,6 +5,6 @@ export function parseEnv(env: string) {
     env
       .split('\n')
       .filter((line) => line.trim() && !line.startsWith('#'))
-      .map((line) => line.split('='))
+      .map((line) => line.split(/=(.*)/s))
   );
 }
