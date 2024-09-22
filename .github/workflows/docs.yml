@@ -41,7 +41,12 @@ jobs:
         run: |
           git merge origin/main --allow-unrelated-histories -X theirs
       
-      - run: yarn typedoc
+      - name: Generate Typedoc
+        run: |
+          yarn typedoc
+          mv dist/functions dist/funcs  
+          find ./dist -type f -name '*.html' \
+            | xargs sed -i.bak --regexp-extended 's:(href="[^"]+)functions/:\1funcs/:g'
       
       - name: Commit and push changes
         run: |
