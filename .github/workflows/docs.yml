@@ -25,7 +25,7 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
       
       - run: corepack enable yarn
-      - run: yarn install
+      - run: yarn install --prefer-offline
       
       - name: Configure Git
         run: |
@@ -44,8 +44,8 @@ jobs:
       - name: Generate Typedoc
         run: |
           yarn typedoc
-          mv docs/functions docs/funcs && sed -i'.bak' 's/href=\"functions/href=\"funcs/g' docs/*.html
-          find ./docs -type f -name '*.bak' -delete
+          curl -O https://gist.githubusercontent.com/j0nl1/7f9b5210c9e6ecbabe322baa16dcb5db/raw/760de77327bf83671cfb6bd4e64181299ba26113/typedoc-fix-cf.mjs
+          node typedoc-fix-cf.mjs docs
       
       - name: Commit and push changes
         run: |
