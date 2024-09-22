@@ -1,5 +1,6 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { parseEnv } from './index';
 
 export async function init(config?: Config) {
   const dir = await readdir('.');
@@ -18,15 +19,6 @@ function readEnv(path: string) {
   } else {
     return '';
   }
-}
-
-export function parseEnv(env: string) {
-  return Object.fromEntries(
-    env
-      .split('\n')
-      .filter((line) => line.trim() && !line.startsWith('#'))
-      .map((line) => line.split('='))
-  );
 }
 
 interface Config {
